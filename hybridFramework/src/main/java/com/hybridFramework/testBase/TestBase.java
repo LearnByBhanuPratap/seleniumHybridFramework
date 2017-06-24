@@ -26,6 +26,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.hybridFramework.excelReader.Excel_reader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -39,13 +40,13 @@ public class TestBase {
 	
     public static ExtentReports extent;
 	public static ExtentTest test;
-	
+	public Excel_reader excelreader;
 	public ITestResult result;
 	
 	static {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-		extent = new ExtentReports(System.getProperty("user.dir") + "/src/main/java/com/selenium/ui/automation/automation/report/test" + formater.format(calendar.getTime()) + ".html", false);
+		extent = new ExtentReports(System.getProperty("user.dir") + "/src/main/java/com/hybridFramework/report/test" + formater.format(calendar.getTime()) + ".html", false);
 	}
 	
 	//3.0.1
@@ -133,8 +134,8 @@ public class TestBase {
 			test.log(LogStatus.SKIP, result.getName() + " test is skipped and skip reason is:-" + result.getThrowable());
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 			test.log(LogStatus.FAIL, result.getName() + " test is failed" + result.getThrowable());
-			String screen = getScreenShot("");
-			test.log(LogStatus.FAIL, test.addScreenCapture(screen));
+			//String screen = getScreenShot("");
+			//test.log(LogStatus.FAIL, test.addScreenCapture(screen));
 		} else if (result.getStatus() == ITestResult.STARTED) {
 			test.log(LogStatus.INFO, result.getName() + " test is started");
 		}
@@ -153,7 +154,7 @@ public class TestBase {
 	
 	@AfterClass(alwaysRun = true)
 	public void endTest() {
-		driver.quit();
+		//driver.quit();
 		extent.endTest(test);
 		extent.flush();
 	}
@@ -225,6 +226,14 @@ public class TestBase {
 	
 	public List<WebElement> getWebElements(String locator) throws Exception{
 		return getLocators(OR.getProperty(locator));
+	}
+	
+	public String[][] getData(String excelName, String sheetName){
+		System.out.println(System.getProperty("user.dir"));
+		String excellocation = System.getProperty("user.dir")+"/src/main/java/com/hybridFramework/data/"+excelName;
+		System.out.println(excellocation);
+		excelreader = new Excel_reader();
+		return excelreader.getExcelData(excellocation, sheetName);
 	}
 
 	

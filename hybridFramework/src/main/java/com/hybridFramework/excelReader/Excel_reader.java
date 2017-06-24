@@ -14,6 +14,7 @@ public class Excel_reader {
 	public String[][] getExcelData(String excellocation, String sheetName) {
 		try {
 			String dataSets[][] = null;
+			
 			FileInputStream file = new FileInputStream(new File(excellocation));
 
 			// Create Workbook instance holding reference to .xlsx file
@@ -26,44 +27,56 @@ public class Excel_reader {
 			// count number of active columns in row
 			int totalColumn = sheet.getRow(0).getLastCellNum();
 			// Create array of rows and column
-			dataSets = new String[totalRow][totalColumn];
+			dataSets = new String[totalRow-1][totalColumn];
 			// Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
-	
+
 			int i = 0;
+			int t = 0;
+			
 			while (rowIterator.hasNext()) {
-				int p = i++;
-				
 				Row row = rowIterator.next();
-				
-				// For each row, iterate through all the columns
-				Iterator<Cell> cellIterator = row.cellIterator();
-                int j=0;
-				while (cellIterator.hasNext()) {
-					
-					Cell cell = cellIterator.next();
-					// Check the cell type and format accordingly
-					switch (cell.getCellType()) {
-					case Cell.CELL_TYPE_NUMERIC:
-						dataSets[p][j++] = cell.getStringCellValue();
-						System.out.print(cell.getNumericCellValue());
-						break;
-					case Cell.CELL_TYPE_STRING:
-						dataSets[p][j++] = cell.getStringCellValue();
-						System.out.print(cell.getStringCellValue());
-						break;
-					case Cell.CELL_TYPE_BOOLEAN:
-						dataSets[p][j++] = cell.getStringCellValue();
-						System.out.print(cell.getStringCellValue());
-						break;
-					case Cell.CELL_TYPE_FORMULA:
-						dataSets[p][j++] = cell.getStringCellValue();
-						System.out.print(cell.getStringCellValue());
-						break;
+				if (i++ != 0) {
+					int k = t;
+					t++;
+					// For each row, iterate through all the columns
+					Iterator<Cell> cellIterator = row.cellIterator();
+					int j = 0;
+					while (cellIterator.hasNext()) {
+
+						Cell cell = cellIterator.next();
+						// Check the cell type and format accordingly
+						switch (cell.getCellType()) {
+						case Cell.CELL_TYPE_NUMERIC:
+							System.out.print(k+",");
+							System.out.print(j+",");
+							dataSets[k][j++] = cell.getStringCellValue();
+							System.out.println(cell.getNumericCellValue());
+							break;
+						case Cell.CELL_TYPE_STRING:
+							System.out.print(k+",");
+							System.out.print(j+",");
+							dataSets[k][j++] = cell.getStringCellValue();
+							System.out.println(cell.getStringCellValue());
+							break;
+						case Cell.CELL_TYPE_BOOLEAN:
+							System.out.print(k+",");
+							System.out.print(j+",");
+							dataSets[k][j++] = cell.getStringCellValue();
+							System.out.println(cell.getStringCellValue());
+							break;
+						case Cell.CELL_TYPE_FORMULA:
+							System.out.print(k+",");
+							System.out.print(j+",");
+							dataSets[k][j++] = cell.getStringCellValue();
+							System.out.println(cell.getStringCellValue());
+							break;
+						}
 					}
+					System.out.println("");
 				}
-				System.out.println("");
 			}
+
 			file.close();
 			return dataSets;
 		} catch (Exception e) {
@@ -73,7 +86,7 @@ public class Excel_reader {
 	}
 
 	public static void main(String[] args) {
-		String excellocation = "/Users/bsingh5/Documents/appium/hybridFramework/src/main/java/com/hybridFramework/data/TestData.xlsx";
+		String excellocation = "/Users/bsingh5/git/seleniumHybridFramework/hybridFramework/src/main/java/com/hybridFramework/data/TestData.xlsx";
 		String sheetName = "LoginTestData";
 		Excel_reader excel = new Excel_reader();
 		excel.getExcelData(excellocation, sheetName);
