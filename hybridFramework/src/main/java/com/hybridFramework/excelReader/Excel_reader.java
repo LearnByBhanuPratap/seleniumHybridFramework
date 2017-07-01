@@ -4,15 +4,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Excel_reader {
+	
+	public static final Logger logger  = Logger.getLogger(Excel_reader.class.getName());
 
 	public String[][] getExcelData(String excellocation, String sheetName) {
 		try {
+			logger.info("Creating excel object:-"+excellocation);
 			String dataSets[][] = null;
 			
 			FileInputStream file = new FileInputStream(new File(excellocation));

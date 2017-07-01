@@ -12,6 +12,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -33,6 +35,8 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 public class TestBase {
+	
+	public static final Logger logger = Logger.getLogger(TestBase.class.getName());
 	public WebDriver driver;
 	public Properties OR;
 	public File f1;
@@ -81,18 +85,24 @@ public class TestBase {
 	}
 	
 	public void loadPropertiesFile() throws IOException{
+		
+		String log4jConfPath = "log4j.properties";
+		PropertyConfigurator.configure(log4jConfPath);
 		OR = new Properties();
 		f1 = new File(System.getProperty("user.dir")+"/src/main/java/com/hybridFramework/config/config.properties");
 		file = new FileInputStream(f1);
 		OR.load(file);
+		logger.info("loading config.properties");
 		
 		f1 = new File(System.getProperty("user.dir")+"/src/main/java/com/hybridFramework/config/or.properties");
 		file = new FileInputStream(f1);
 		OR.load(file);
+		logger.info("loading or.properties");
 		
 		f1 = new File(System.getProperty("user.dir")+"/src/main/java/com/hybridFramework/properties/homepage.properties");
 		file = new FileInputStream(f1);
 		OR.load(file);
+		logger.info("loading homepage.properties");
 	}
 	
 	public String getScreenShot(String imageName) throws IOException{
@@ -235,16 +245,16 @@ public class TestBase {
 		excelreader = new Excel_reader();
 		return excelreader.getExcelData(excellocation, sheetName);
 	}
-
 	
 	public static void main(String[] args) throws Exception {
 		TestBase test = new TestBase();
 		//test.getBrowser("firefox");
 		test.loadPropertiesFile();
+		System.out.println(test.OR.getProperty("username"));
 		
 		
 		//test.getWebElement("submitbutton");
-		test.getWebElements("submitbutton");
+		//test.getWebElements("submitbutton");
 		
 		//test.getLocator(test.OR.getProperty("username"));
 
