@@ -1,6 +1,5 @@
 package com.hybridFramework.homepage;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

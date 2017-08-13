@@ -37,8 +37,8 @@ public class DataBase {
 		return data;
 	}
 	
-	public ResultSet updateData(String query) throws ClassNotFoundException, SQLException{
-		ResultSet data = getStatement().executeQuery(query);
-		return data;
+	public void updateData(String query) throws ClassNotFoundException, SQLException{
+		getStatement().executeUpdate(query);
+		
 	}
 }
