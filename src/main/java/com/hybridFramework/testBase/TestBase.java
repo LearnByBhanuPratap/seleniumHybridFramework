@@ -301,8 +301,8 @@ public class TestBase {
 	
 	public static void main(String[] args) throws Exception {
 		TestBase test = new TestBase();
-		//test.getBrowser("firefox");
 		test.loadPropertiesFile();
+		test.getBrowser("chrome");
 		System.out.println(test.OR.getProperty("username"));
 		
 		
