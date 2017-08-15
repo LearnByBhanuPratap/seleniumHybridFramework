@@ -13,6 +13,7 @@ import com.hybridFramework.database.DataBase;
 
 public class DBTest{
 	WebDriver driver;
+	
 	@Test
 	public void selectDBdata() throws ClassNotFoundException, SQLException{
 		String textData = driver.findElement(By.xpath("")).getText();

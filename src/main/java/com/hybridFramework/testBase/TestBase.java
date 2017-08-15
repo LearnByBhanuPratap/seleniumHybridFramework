@@ -77,7 +77,7 @@ public class TestBase {
 			System.out.println(System.getProperty("os.name"));
 			if(browser.equalsIgnoreCase("firefox")){
 				System.out.println(System.getProperty("user.dir"));
-				System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir")+"/drivers/geckodriver");
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/drivers/geckodriver");
 				driver = new FirefoxDriver();
 			}
 			else if(browser.equalsIgnoreCase("chrome")){
@@ -302,7 +302,7 @@ public class TestBase {
 	public static void main(String[] args) throws Exception {
 		TestBase test = new TestBase();
 		test.loadPropertiesFile();
-		test.getBrowser("chrome");
+		test.getBrowser("firefox");
 		System.out.println(test.OR.getProperty("username"));
 		
 		
