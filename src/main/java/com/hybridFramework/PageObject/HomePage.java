@@ -32,12 +32,6 @@ public class HomePage {
 	
 	@FindBy(xpath="//*[@id='block_top_menu']/ul/li[3]/a")
 	public WebElement tshirtsMenu;
-	
-	@FindBy(xpath="//*[@id='center_column']/div/div[1]/ul/li[1]/a/span")
-	WebElement orderHistoryAndDetailsLink;
-	
-	@FindBy(xpath="//*[@id='center_column']/div/div[1]/ul/li[3]/a/span")
-	WebElement myAddresses;
 
 	
 	public HomePage(WebDriver driver) {
