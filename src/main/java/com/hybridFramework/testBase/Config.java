@@ -33,5 +33,8 @@ public class Config extends TestBase{
 	public String getDbConnStr() {
 		return OR.getProperty("DtaBase.ConnectionStr");
 	}
+	public String getBrowser() {
+		return OR.getProperty("Browser");
+	}
 
 }
