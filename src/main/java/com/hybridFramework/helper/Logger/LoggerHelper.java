@@ -15,7 +15,8 @@ public class LoggerHelper {
 		if (root) {
 			return Logger.getLogger(clas);
 		}
-		PropertyConfigurator.configure(ResourceHelper.getResourcePath("/src/main/resources/configfile/log4j.properties"));
+		//String log4jLOcation = System.getProperty("user.dir")+"/src/main/resources/log4j.properties";
+		PropertyConfigurator.configure(ResourceHelper.getResourcePath("/src/main/resources/log4j.properties"));
 		root = true;
 		return Logger.getLogger(clas);
 	}

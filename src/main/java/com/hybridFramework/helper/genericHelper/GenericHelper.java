@@ -25,8 +25,9 @@ public class GenericHelper{
 			return null;
 		}
 
-		if (!displayed)
+		if (!displayed){
 			return null;
+		}
 		String text = element.getText();
 		log.info("weblement valus is.."+text);
 		return text;
@@ -34,10 +35,12 @@ public class GenericHelper{
 	
 
 	public String readValueFromInput(WebElement element) {
-		if (null == element)
+		if (null == element){
 			return null;
-		if (!isDisplayed(element))
+		}
+		if (!isDisplayed(element)){
 			return null;
+		}
 		String value = element.getAttribute("value");
 		log.info("weblement valus is.."+value);
 		return value;
@@ -66,10 +69,12 @@ public class GenericHelper{
 	}
 	
 	protected String getDisplayText(WebElement element) {
-		if (null == element)
+		if (null == element){
 			return null;
-		if (!isDisplayed(element))
+		}
+		if (!isDisplayed(element)){
 			return null;
+		}
 		return element.getText();
 	}
 	

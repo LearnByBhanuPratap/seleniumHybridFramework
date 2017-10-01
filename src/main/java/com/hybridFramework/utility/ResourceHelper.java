@@ -27,11 +27,5 @@ public class ResourceHelper {
 	public static InputStream getResourcePathInputStream(String path) throws FileNotFoundException{
 		return new FileInputStream(ResourceHelper.getResourcePath(path));
 	}
-	
-	public static void main(String[] args) throws FileNotFoundException {
-		//System.out.println(ResourceHelper.getResourcePath("configfile/"+ "config.properties"));	
-		
-		getBaseResourcePath() ;
-	}
-	
+
 }

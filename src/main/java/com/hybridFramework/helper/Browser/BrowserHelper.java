@@ -48,28 +48,23 @@ public class BrowserHelper{
 
 	public void SwitchToWindow(int index) {
 
-		LinkedList<String> windowsId = new LinkedList<String>(
-				getWindowHandlens());
+		LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
 
-		if (index < 0 || index > windowsId.size())
+		if (index < 0 || index > windowsId.size()){
 			throw new IllegalArgumentException("Invalid Index : " + index);
-
+		}
 		driver.switchTo().window(windowsId.get(index));
 		Log.info(index);
 	}
 
 	public void switchToParentWindow() {
-		LinkedList<String> windowsId = new LinkedList<String>(
-				getWindowHandlens());
+		LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
 		driver.switchTo().window(windowsId.get(0));
 		Log.info("");
 	}
 
 	public void switchToParentWithChildClose() {
-		switchToParentWindow();
-
-		LinkedList<String> windowsId = new LinkedList<String>(
-				getWindowHandlens());
+		LinkedList<String> windowsId = new LinkedList<String>(getWindowHandlens());
 
 		for (int i = 1; i < windowsId.size(); i++) {
 			Log.info(windowsId.get(i));
