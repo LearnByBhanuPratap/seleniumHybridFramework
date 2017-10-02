@@ -30,8 +30,10 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import com.hybridFramework.excelReader.Excel_reader;
+import com.hybridFramework.helper.Wait.WaitHelper;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -41,7 +43,7 @@ public class TestBase {
 	
 	public static final Logger logger = Logger.getLogger(TestBase.class.getName());
 	public WebDriver driver;
-	public Properties OR;
+	public static Properties OR;
 	public File f1;
 	public FileInputStream file;
 	
@@ -54,6 +56,20 @@ public class TestBase {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
 		extent = new ExtentReports(System.getProperty("user.dir") + "/src/main/java/com/hybridFramework/report/test" + formater.format(calendar.getTime()) + ".html", false);
+	}
+	
+	@BeforeTest
+	public void launchBrowser(){
+		try {
+			loadPropertiesFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Config config = new Config(OR);
+		getBrowser(config.getBrowser());
+		WaitHelper waitHelper = new WaitHelper(driver);
+		waitHelper.setImplicitWait(config.getImplicitWait(), TimeUnit.SECONDS);
+		waitHelper.setPageLoadTimeout(config.getPageLoadTimeOut(), TimeUnit.SECONDS);
 	}
 	
 	//3.0.1
@@ -147,8 +163,8 @@ public class TestBase {
 			test.log(LogStatus.SKIP, result.getName() + " test is skipped and skip reason is:-" + result.getThrowable());
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 			test.log(LogStatus.FAIL, result.getName() + " test is failed" + result.getThrowable());
-			//String screen = getScreenShot("");
-			//test.log(LogStatus.FAIL, test.addScreenCapture(screen));
+			String screen = getScreenShot("");
+			test.log(LogStatus.FAIL, test.addScreenCapture(screen));
 		} else if (result.getStatus() == ITestResult.STARTED) {
 			test.log(LogStatus.INFO, result.getName() + " test is started");
 		}

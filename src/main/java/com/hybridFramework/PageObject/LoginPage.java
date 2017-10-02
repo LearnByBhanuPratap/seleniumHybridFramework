@@ -6,10 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.hybridFramework.helper.Javascript.JavaScriptHelper;
 import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.helper.genericHelper.GenericHelper;
 import com.hybridFramework.testBase.Config;
+import com.hybridFramework.testBase.TestBase;
 
 
 public class LoginPage{
@@ -44,7 +46,8 @@ public class LoginPage{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, signin,new Config().getExplicitWait());
+		
+		waitHelper.waitForElement(driver, signin,new Config(TestBase.OR).getExplicitWait());
 	}
 	
 	public void clickOnSignInLink(){
@@ -64,6 +67,7 @@ public class LoginPage{
 	
 	public HomePage clickOnSubmitButton(){
 		log.info("clicking on submit button...");
+		new JavaScriptHelper(driver).scrollDownVertically();
 		submitLogin.click();
 		return new HomePage(driver);
 	}
@@ -81,6 +85,13 @@ public class LoginPage{
 	public RegistrationPage clickOnCreateAnAccount(){
 		createAnAccount.click();
 		return new RegistrationPage(driver);
+	}
+	
+	public void loginToApplication(String emailAddress, String password){
+		clickOnSignInLink();
+		enterEmailAddress(emailAddress);
+		enterPassword(password);
+		clickOnSubmitButton();
 	}
 
 }

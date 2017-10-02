@@ -2,6 +2,7 @@ package com.hybridFramework.helper.genericHelper;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import com.hybridFramework.helper.Logger.LoggerHelper;
 
@@ -22,6 +23,7 @@ public class GenericHelper{
 			displayed = isDisplayed(element);
 		} catch (Exception e) {
 			log.error(e);
+			Reporter.log(e.fillInStackTrace().toString());
 			return null;
 		}
 
@@ -53,6 +55,7 @@ public class GenericHelper{
 			return true;
 		} catch (Exception e) {
 			log.info(e);
+			Reporter.log(e.fillInStackTrace().toString());
 			return false;
 		}
 	}
@@ -64,6 +67,7 @@ public class GenericHelper{
 			return false;
 		} catch (Exception e) {
 			log.error(e);
+			Reporter.log(e.fillInStackTrace().toString());
 			return true;
 		}
 	}
@@ -89,6 +93,7 @@ public class GenericHelper{
 			elementText = element.getText();
 		} catch (Exception ex) {
 			log.info("Element not found " + ex);
+			Reporter.log(ex.fillInStackTrace().toString());
 		}
 		return elementText;
 	}

@@ -1,7 +1,14 @@
 package com.hybridFramework.testBase;
 
+import java.util.Properties;
+
 public class Config extends TestBase{
 	
+	private Properties OR;
+	
+	public Config(Properties OR){
+		this.OR = OR;
+	}
 	public String getUserName() {
 		return OR.getProperty("Username");
 	}

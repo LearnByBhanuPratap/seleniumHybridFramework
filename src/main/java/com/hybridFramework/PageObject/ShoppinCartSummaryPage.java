@@ -14,6 +14,7 @@ import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.helper.assertionHelper.VerificationHelper;
 import com.hybridFramework.testBase.Config;
+import com.hybridFramework.testBase.TestBase;
 
 public class ShoppinCartSummaryPage {
 
@@ -34,7 +35,7 @@ public class ShoppinCartSummaryPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, yourShoppingCart,new Config().getExplicitWait());
+		waitHelper.waitForElement(driver, yourShoppingCart,new Config(TestBase.OR).getExplicitWait());
 	}
 	
 	public boolean verifyProduct(String prod){

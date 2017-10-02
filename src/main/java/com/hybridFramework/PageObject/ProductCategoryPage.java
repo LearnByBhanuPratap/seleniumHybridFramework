@@ -15,6 +15,7 @@ import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.helper.assertionHelper.VerificationHelper;
 import com.hybridFramework.testBase.Config;
+import com.hybridFramework.testBase.TestBase;
 
 public class ProductCategoryPage {
 
@@ -46,7 +47,7 @@ public class ProductCategoryPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, catalogTextObj,new Config().getExplicitWait());
+		waitHelper.waitForElement(driver, catalogTextObj,new Config(TestBase.OR).getExplicitWait());
 	}
 	
 	public void mouseOverOnProduct(int number){

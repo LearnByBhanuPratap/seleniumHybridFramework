@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.testBase.Config;
+import com.hybridFramework.testBase.TestBase;
 
 public class RegistrationPage {
 
@@ -91,7 +92,7 @@ public class RegistrationPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, mrRadioButton, new Config().getExplicitWait());
+		waitHelper.waitForElement(driver, mrRadioButton,new Config(TestBase.OR).getExplicitWait());
 	}
 
 	public void setMrRadioButton() {

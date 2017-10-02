@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.testBase.Config;
+import com.hybridFramework.testBase.TestBase;
 
 public class HomePage {
 	
@@ -38,7 +39,8 @@ public class HomePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		waitHelper.waitForElement(driver, womenMenu,new Config().getExplicitWait());
+		TestBase testBase = new TestBase();
+		waitHelper.waitForElement(driver, womenMenu,new Config(TestBase.OR).getExplicitWait());
 	}
 	
 	public void mouseOver(String data){

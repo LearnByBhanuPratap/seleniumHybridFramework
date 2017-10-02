@@ -32,6 +32,11 @@ public class WaitHelper {
 		driver.manage().timeouts().implicitlyWait(timeout, unit == null ? TimeUnit.SECONDS : unit);
 	}
 	
+	public void setPageLoadTimeout(long timeout, TimeUnit unit) {
+		Log.info(timeout);
+		driver.manage().timeouts().pageLoadTimeout(timeout, unit == null ? TimeUnit.SECONDS : unit);
+	}
+	
 	private WebDriverWait getWait(int timeOutInSeconds, int pollingEveryInMiliSec) {
 		Log.debug("");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
