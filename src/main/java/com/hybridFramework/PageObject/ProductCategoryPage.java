@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.hybridFramework.helper.DropDown.DropDownHelper;
 import com.hybridFramework.helper.Javascript.JavaScriptHelper;
 import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.helper.Wait.WaitHelper;
@@ -41,6 +42,12 @@ public class ProductCategoryPage {
 	
 	@FindBy(xpath="//*[@id='center_column']/ul/li")
 	List<WebElement> totalProducts;
+	
+	@FindBy(xpath="//*[@id='selectProductSort']")
+	public WebElement sortBy;
+	
+	@FindBy(xpath="//*[@id='center_column']/ul/li/div/div[2]/div/span[1]")
+	List<WebElement> allpriceElements;
 	
 	
 	public ProductCategoryPage(WebDriver driver) {
@@ -123,5 +130,14 @@ public class ProductCategoryPage {
 	
 	public int getTotalProducts(){
 		return totalProducts.size();
+	}
+	
+	public List<WebElement> getAllProductsPrice(){
+		return allpriceElements;
+	}
+	
+	public void selectSortByFilter(String dataToSelect){
+		DropDownHelper dropdown = new DropDownHelper(driver);
+		dropdown.SelectUsingVisibleText(sortBy, dataToSelect);
 	}
 }

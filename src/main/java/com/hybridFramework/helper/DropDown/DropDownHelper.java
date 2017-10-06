@@ -41,6 +41,12 @@ public class DropDownHelper {
 		Log.info("Locator : " + element + " Value : " + index);
 	}
 	
+	public void SelectUsingVisibleText(WebElement element,String text) {
+		Select select = new Select(element);
+		select.selectByVisibleText(text);
+		Log.info("Locator : " + element + " Value : " + text);
+	}
+	
 	
 	public List<String> getAllDropDownValues(WebElement locator) {
 		Select select = new Select(locator);
