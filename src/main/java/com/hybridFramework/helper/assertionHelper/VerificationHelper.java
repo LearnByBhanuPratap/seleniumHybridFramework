@@ -6,8 +6,10 @@ import org.openqa.selenium.WebElement;
 
 import com.hybridFramework.helper.Logger.LoggerHelper;
 
-
-
+/**
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class VerificationHelper{
 
 	private static final  Logger log = LoggerHelper.getLogger(VerificationHelper.class);

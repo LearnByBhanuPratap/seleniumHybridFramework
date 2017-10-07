@@ -12,9 +12,8 @@ import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.testBase.TestBase;
 
 /**
- * 
- * @author bsingh5
- *
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
  */
 public class BrowserHelper{
 

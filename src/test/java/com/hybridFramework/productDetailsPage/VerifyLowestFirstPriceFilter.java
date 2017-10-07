@@ -15,8 +15,13 @@ import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.testBase.Config;
 import com.hybridFramework.testBase.TestBase;
 
+/**
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class VerifyLowestFirstPriceFilter extends TestBase{
 	private final Logger log = LoggerHelper.getLogger(VerifyLowestFirstPriceFilter.class);
+	
 	@Test
 	public void verifyLowestFirstPriceListInProduct_deatilsPage() throws InterruptedException {
 		log.info(VerifyLowestFirstPriceFilter.class.getName()+" started");
@@ -41,7 +46,7 @@ public class VerifyLowestFirstPriceFilter extends TestBase{
 		// Store it in array list
 		while (itr.hasNext()) {
 			String p = itr.next().getText();
-			System.out.println(p);
+			//System.out.println(p);
 			if (p.contains("$")) {
 				String actualData = p.substring(1);
 				System.out.println(actualData);
@@ -50,10 +55,12 @@ public class VerifyLowestFirstPriceFilter extends TestBase{
 				array.add(productPrice);
 			}
 		}
-
+        System.out.println(array);
+        //[16, 16, 26, 27, 28, 30, 50]
 		for (int i = 0; i < array.size() - 1; i++) {
 			// this condition will check all next price should be smaller than previous one.
-			if (array.get(i) < array.get(i + 1)) {
+			// next price can be grater and equal
+			if (array.get(i) <= array.get(i + 1)) {
 				System.out.println("obj.get(i):-" + array.get(i));
 				System.out.println("obj.get(i+1):-" + array.get(i + 1));
 			} else {

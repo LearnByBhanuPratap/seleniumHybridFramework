@@ -9,6 +9,11 @@ import com.hybridFramework.helper.Logger.LoggerHelper;
 import com.hybridFramework.testBase.Config;
 import com.hybridFramework.testBase.TestBase;
 
+/**
+ * 
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class LoginTest extends TestBase{
 	private final Logger log = LoggerHelper.getLogger(LoginTest.class);
 	

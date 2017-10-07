@@ -13,7 +13,11 @@ import com.hybridFramework.helper.genericHelper.GenericHelper;
 import com.hybridFramework.testBase.Config;
 import com.hybridFramework.testBase.TestBase;
 
-
+/**
+ * 
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class LoginPage{
 	
 	WebDriver driver;
@@ -46,7 +50,6 @@ public class LoginPage{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		waitHelper = new WaitHelper(driver);
-		
 		waitHelper.waitForElement(driver, signin,new Config(TestBase.OR).getExplicitWait());
 	}
 	

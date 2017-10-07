@@ -6,7 +6,10 @@ import org.testng.Reporter;
 
 import com.hybridFramework.helper.Logger.LoggerHelper;
 
-
+/**
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class GenericHelper{
 	
 	private static final Logger log = LoggerHelper.getLogger(GenericHelper.class);

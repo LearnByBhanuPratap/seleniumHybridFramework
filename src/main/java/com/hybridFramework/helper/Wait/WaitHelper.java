@@ -14,8 +14,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.hybridFramework.helper.Logger.LoggerHelper;
 
-
-
+/**
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class WaitHelper {
 	
 	private WebDriver driver;

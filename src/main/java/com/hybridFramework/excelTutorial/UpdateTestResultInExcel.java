@@ -8,6 +8,10 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class UpdateTestResultInExcel {
 
 	public static void updateResult(String excellocation, String sheetName, String testCaseName, String testStatus)

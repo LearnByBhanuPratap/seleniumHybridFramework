@@ -9,11 +9,9 @@ import org.openqa.selenium.WebDriver;
 import com.hybridFramework.helper.Logger.LoggerHelper;
 
 /**
- * 
- * @author bsingh5
- *
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
  */
-
 public class AlertHelper{
 	
 	private WebDriver driver;

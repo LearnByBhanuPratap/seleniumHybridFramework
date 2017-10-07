@@ -15,7 +15,11 @@ import com.hybridFramework.helper.Wait.WaitHelper;
 import com.hybridFramework.helper.assertionHelper.VerificationHelper;
 import com.hybridFramework.testBase.Config;
 import com.hybridFramework.testBase.TestBase;
-
+/**
+ * 
+ * @author Bhanu Pratap
+ * https://www.youtube.com/user/MrBhanupratap29/playlists
+ */
 public class ShoppinCartSummaryPage {
 
 	WebDriver driver;
