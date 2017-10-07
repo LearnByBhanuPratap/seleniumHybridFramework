@@ -33,6 +33,7 @@ public class Registration extends TestBase{
 		loginPage.clickOnSignInLink();
 		loginPage.enterRegistrationEmail();
 		loginPage.clickOnCreateAnAccount();
+		
 		register = new RegistrationPage(driver);
 		register.setMrRadioButton();
 		register.setFirstName("firstName");
@@ -53,6 +54,7 @@ public class Registration extends TestBase{
 		register.clickRegistration();
 		
 		myAccountPage = new MyAccountPage(driver);
+		
 		if(myAccountPage.verifySuccessRegistrationMsg()){
 			log.info("Registration is sucessful");
 		}

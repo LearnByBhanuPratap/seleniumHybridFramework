@@ -38,7 +38,9 @@ public class VerifyLowestFirstPriceFilter extends TestBase{
 		Thread.sleep(8000);
 		
 		List<WebElement> price = pcategoryPage.getAllProductsPrice();
+		
 		ArrayList<Integer> array = new ArrayList<Integer>();
+		
 		Iterator<WebElement> itr = price.iterator();
 
 		//price comes in "$16.40" format
