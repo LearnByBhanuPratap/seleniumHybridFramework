@@ -13,10 +13,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.poi.openxml4j.opc.internal.FileHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -135,7 +134,7 @@ public class TestBase {
 		SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
 		String actualImageName = imagelocation+imageName+"_"+formater.format(calendar.getTime())+".png";
 		File destFile = new File(actualImageName);
-		FileUtils.copyFile(image, destFile);
+		FileHelper.copyFile(image, destFile);
 		return actualImageName;
 	}
 	
